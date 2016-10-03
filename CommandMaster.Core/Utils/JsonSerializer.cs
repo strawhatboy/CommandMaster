@@ -25,10 +25,32 @@ namespace CommandMaster.Core.Utils
 
         public static T stringToObject<T>(string input)
         {
-            var serializer = new DataContractJsonSerializer(typeof(T));
-            var mStream = new MemoryStream(Encoding.UTF8.GetBytes(input));
-            T readConfig = (T)serializer.ReadObject(mStream);
+            T readConfig = (T)stringToObject(typeof(T), input);
             return readConfig;
+        }
+
+        public static object stringToObject(Type t, string input)
+        {
+            var serializer = new DataContractJsonSerializer(t);
+            var mStream = new MemoryStream(Encoding.UTF8.GetBytes(input));
+            return serializer.ReadObject(mStream);
+        }
+
+        public static string objectToFile<T>(T obj, string fileName)
+        {
+            var res = objectToString(obj);
+            File.WriteAllText(fileName, res);
+            return res;
+        }
+
+        public static T fileToObject<T>(string fileName)
+        {
+            return stringToObject<T>(File.ReadAllText(fileName));
+        }
+
+        public static object fileToObject(Type t, string fileName)
+        {
+            return stringToObject(t, File.ReadAllText(fileName));
         }
     }
 }

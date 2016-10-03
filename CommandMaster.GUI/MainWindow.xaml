@@ -1,0 +1,40 @@
+﻿<Window x:Class="CommandMaster.GUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Add new command to your system:" Height="250" Width="525">
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="{x:Type Label}" x:Key="LabelStyle">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="15" />
+            </Style>
+            <Style TargetType="{x:Type TextBox}" x:Key="TextBoxStyle">
+                <Setter Property="Margin" Value="5" />
+            </Style>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100px" MinWidth="100px" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="30px" MinWidth="30px" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Label Style="{StaticResource LabelStyle}" Content="Name:" />
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="1" Content="Target:" />
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="2" Content="Start Dir:" />
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="3" Content="Type:" />
+        <Label Style="{StaticResource LabelStyle}" Grid.Row="4" Content="Description:" />
+        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Column="1" Text="{Binding name}" />
+        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="1" Grid.Column="1" Text="{Binding target}" />
+        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="2" Grid.Column="1" Text="{Binding startDir}" />
+        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="3" Grid.Column="1" Text="{Binding type}" />
+        <TextBox Style="{StaticResource TextBoxStyle}" Grid.Row="4" Grid.Column="1" Text="{Binding description}" />
+        <Button HorizontalAlignment="Right" Grid.Row="5" Grid.ColumnSpan="3" Width="100" Content="ADD NOW !!!" Margin="5" Click="Button_Click"/>
+    </Grid>
+</Window>
